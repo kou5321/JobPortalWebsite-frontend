@@ -20,8 +20,8 @@ const Header = () => {
         <header className="header">
             <div className="container">
                 <div className="logoAndTitle">
-                    <img src={logo} alt="JobPulse Logo" className="logo" />
-                    <p className="appTitle ml-2">JobPortal</p>
+                    <img src={logo} alt="AMES Logo" className="logo" />
+                    <NavLink to="/software-newgrad" className="appTitle ml-2">JobPortal</NavLink>
                 </div>
                 <nav className="navLinks">
                     <NavLink to="/software-newgrad" className="navLink">👩🏻‍💻 Software NewGrad</NavLink>

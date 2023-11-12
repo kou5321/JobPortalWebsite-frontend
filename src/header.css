@@ -1,63 +1,138 @@
-.header {
-    padding: 1rem 0;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    box-shadow: 0 1px px rgba(0, 0, 0, 0.08); /* Adds the drop shadow */
-}
+/*.header {*/
+/*    padding: 1rem 0;*/
+/*    padding-left: 1.5rem;*/
+/*    padding-right: 1.5rem;*/
+/*    box-shadow: 0 1px px rgba(0, 0, 0, 0.08); !* Adds the drop shadow *!*/
+/*}*/
 
-.container {
+/*.container {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*    margin: 0 auto;*/
+/*    padding: 0 20px;*/
+/*}*/
+
+/*.logoAndTitle {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.logo {*/
+/*    height: 30px;*/
+/*    width: 80px;*/
+/*    margin-right: 20px;*/
+/*}*/
+
+/*.appTitle {*/
+/*    color: #161616;*/
+/*    font-size: 24px;*/
+/*    font-weight: 600;*/
+/*    font-family: "Gill Sans", sans-serif;*/
+/*}*/
+
+/*.navLinks {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    width: 100%;*/
+/*}*/
+
+/*.navLink {*/
+/*    color: #161616;*/
+/*    margin: 0 14px;*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*.navLink:hover {*/
+/*    color: #161616;*/
+/*}*/
+
+/*.loginBtn {*/
+/*    background: transparent;*/
+/*    border: none;*/
+/*    color: black;*/
+/*    font-size: 16px;*/
+/*    font-weight: 600;*/
+/*    padding-left: 8px;*/
+/*    white-space: nowrap;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.loginBtn:focus {*/
+/*    outline: 0;*/
+/*}*/
+
+/* header.css */
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 auto;
-    padding: 0 20px;
+    padding: 10px 10px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 1500px; /* or any other value that suits your design */
+    margin: 0 auto; /* This centers the container within the header */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .logoAndTitle {
+    flex-grow: 1;
     display: flex;
     align-items: center;
 }
 
 .logo {
-    height: 30px;
-    width: 80px;
-    margin-right: 20px;
+    height: 50px;
+    margin-right: 15px;
 }
 
 .appTitle {
-    color: #161616;
     font-size: 24px;
-    font-weight: 600;
-    font-family: "Gill Sans", sans-serif;
+    color: #333;
+    text-decoration: none;
 }
 
 .navLinks {
     display: flex;
-    justify-content: center;
-    width: 100%;
+    justify-content: space-between; /* This will space out the nav links */
+    flex-grow: 2; /* Adjust as necessary */
+    margin: 0 10px; /* Give some space around the navLinks */
 }
 
 .navLink {
-    color: #161616;
-    margin: 0 14px;
     text-decoration: none;
+    margin-right: 20px;
+    color: #333;
+    font-size: 22px;
 }
 
 .navLink:hover {
-    color: #161616;
+    color: #007bff;
 }
 
 .loginBtn {
-    background: transparent;
+    background-color: #007bff;
+    color: white;
     border: none;
-    color: black;
-    font-size: 16px;
-    font-weight: 600;
-    padding-left: 8px;
-    white-space: nowrap;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-.loginBtn:focus {
-    outline: 0;
+.loginBtn:hover {
+    background-color: #0056b3;
+}
+
+.header > .container > div:last-child {
+    flex-grow: 1; /* Adjust as necessary */
+    display: flex;
+    justify-content: flex-end;
 }
