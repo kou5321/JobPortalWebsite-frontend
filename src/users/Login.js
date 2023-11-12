@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import UserService from './UserService';
+import '../App.css'
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -19,12 +20,15 @@ const Login = () => {
     };
 
     return (
-        <form onSubmit={handleLogin}>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
-            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" required />
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-            <button type="submit">Login</button>
-        </form>
+        <div className="form-container">
+            <h2>Login</h2>
+            <form onSubmit={handleLogin}>
+                <input className="form-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
+                <input className="form-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" required />
+                <input className="form-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
+                <button className="form-button" type="submit">Login</button>
+            </form>
+        </div>
     );
 };
 

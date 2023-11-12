@@ -1,0 +1,63 @@
+.header {
+    padding: 1rem 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    box-shadow: 0 1px px rgba(0, 0, 0, 0.08); /* Adds the drop shadow */
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logoAndTitle {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 30px;
+    width: 80px;
+    margin-right: 20px;
+}
+
+.appTitle {
+    color: #161616;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: "Gill Sans", sans-serif;
+}
+
+.navLinks {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.navLink {
+    color: #161616;
+    margin: 0 14px;
+    text-decoration: none;
+}
+
+.navLink:hover {
+    color: #161616;
+}
+
+.loginBtn {
+    background: transparent;
+    border: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    padding-left: 8px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.loginBtn:focus {
+    outline: 0;
+}
