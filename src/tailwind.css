@@ -665,6 +665,20 @@ code {
     cursor: pointer;
 }
 
+.search-input {
+    width: 80%; /* Adjust the width as needed */
+}
+
+.form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
 /* .fixed-button button {
   background-color: #007bff;
   color: #fff;

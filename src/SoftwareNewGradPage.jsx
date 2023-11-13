@@ -9,8 +9,8 @@ const SoftwareNewGradPage = () => {
     const loggedIn = useContext(AuthContext);
 
     return (
-        <div className="flex justify-center items-center h-screen">
-            <SearchBar></SearchBar>
+        <div className="parent-of-search-bar">
+            <SearchBar />
         </div>
     );
 };

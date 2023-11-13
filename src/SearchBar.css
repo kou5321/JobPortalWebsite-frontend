@@ -1,0 +1,50 @@
+.parent-of-search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* This is an example to take the full height, adjust as necessary */
+}
+
+
+.search-input {
+    width: 100%; /* Adjust the width as needed */
+}
+
+.search-bar-container {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    padding: 1rem;
+    width: 70%; /* Adjust the width as necessary */
+    margin-left: auto; /* These two margin properties ensure */
+    margin-right: auto; /* the container is centered horizontally */
+}
+
+.search-form {
+    display: flex;
+    width: 50%; /* Adjust the width as necessary */
+    border: 1px solid #ddd; /* Border color as per your design */
+    border-radius: 20px; /* Rounded borders for the search bar */
+    overflow: hidden; /* Ensures inner elements conform to border radius */
+}
+
+.search-input {
+    flex-grow: 1;
+    border: none;
+    padding: 0.5rem 1rem;
+}
+
+.search-button {
+    background-color: #007bff; /* Button color as per your design */
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.search-input:focus, .search-button:focus {
+    outline: none;
+}
+
+.search-button:hover {
+    background-color: #0056b3; /* Darker shade for hover state */
+}
