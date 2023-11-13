@@ -87,11 +87,11 @@ const JobList = () => {
                 <table>
                     <thead>
                     <tr>
-                        <th>Company</th>
-                        <th>Job</th>
-                        <th>Yoe</th>
-                        <th>Posted</th>
-                        <th>Applied?</th>
+                        <th>🏙️ Company</th>
+                        <th>💼 Job</th>
+                        <th>🗓️ Yoe</th>
+                        <th>🕓 Posted</th>
+                        <th>⏫  Applied?</th>
                     </tr>
                     </thead>
                     <tbody>
