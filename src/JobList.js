@@ -1,85 +1,37 @@
-// import React, { useState, useEffect } from 'react';
-//
-// // JobList component
-// const JobList = () => {
-//     // State to hold the job posts
-//     const [jobPosts, setJobPosts] = useState([]);
-//
-//     // Function to fetch job posts from the API
-//     const fetchJobPosts = async () => {
-//         try {
-//             const response = await fetch('http://localhost:8080/getAllJobPosts');
-//             if (!response.ok) {
-//                 throw new Error(`HTTP error! status: ${response.status}`);
-//             }
-//             const data = await response.json();
-//             setJobPosts(data); // Assuming the API returns an array of job posts
-//         } catch (error) {
-//             console.error('Error fetching job posts:', error);
-//         }
-//     };
-//
-//     // useEffect to call fetchJobPosts when the component mounts
-//     useEffect(() => {
-//         fetchJobPosts();
-//     }, []);
-//
-//     // Render the job posts or a loading message
-//     return (
-//         <div>
-//             {jobPosts.length > 0 ? (
-//                 <ul>
-//                     {jobPosts.map((job) => (
-//                         <li key={job.id}>
-//                             <h2>{job.title} - {job.company}</h2>
-//                             <p>yoe: {job.yoe}</p>
-//                             <p>postDate: {job.date_added}</p>
-//                             {job.apply_link ? (
-//                                 <a href={job.apply_link} target="_blank" rel="noopener noreferrer">Apply Now</a>
-//                             ) : (
-//                                 <span>Closed</span>
-//                             )}
-//                         </li>
-//                     ))}
-//                 </ul>
-//             ) : (
-//                 <p>Loading job posts...</p>
-//             )}
-//         </div>
-//     );
-// };
-//
-// export default JobList;
-
 import React, { useState, useEffect } from 'react';
 import './JobList.css';
 
 // JobList component
-const JobList = () => {
+const JobList = ({searchQuery}) => {
     const [jobPosts, setJobPosts] = useState([]);
 
-    const fetchJobPosts = async () => {
-        try {
-            const response = await fetch('http://localhost:8080/getAllJobPosts');
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+    useEffect(() => {
+        const fetchJobPosts = async () => {
+            // Correctly use searchQuery in the API URL
+            console.log('Search Query:', searchQuery);
+            const apiUrl = searchQuery
+                ? `http://localhost:8080/jobPost/search/text=${encodeURIComponent(searchQuery)}`
+                : 'http://localhost:8080/getAllJobPosts';
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                setJobPosts(data);
+            } catch (error) {
+                console.error('Error fetching job posts:', error);
             }
-            const data = await response.json();
-            setJobPosts(data);
-        } catch (error) {
-            console.error('Error fetching job posts:', error);
-        }
-    };
+        };
+        fetchJobPosts();
+    }, [searchQuery]); // Dependency array includes searchQuery
 
     function formatDate(dateString) {
         const date = new Date(dateString);
         const options = { month: 'short', day: 'numeric' };
         return date.toLocaleDateString('en-US', options); // Adjust 'en-US' as needed for your locale
     }
-
-    useEffect(() => {
-        fetchJobPosts();
-    }, []);
 
     return (
         <div className="job-list">
@@ -121,7 +73,7 @@ const JobList = () => {
                     </tbody>
                 </table>
             ) : (
-                <p>Loading job posts...</p>
+                <p>Sorry. No results found for this keyword.</p>
             )}
         </div>
     );

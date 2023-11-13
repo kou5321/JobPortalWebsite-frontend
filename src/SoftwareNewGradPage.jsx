@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import AuthContext from './authContext';
 // import { JobType } from './JobType';
 import SearchBar from "./SearchBar";
@@ -6,6 +6,12 @@ import JobList from "./JobList";
 
 const SoftwareNewGradPage = () => {
     const loggedIn = useContext(AuthContext);
+
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const handleSearch = (query) => {
+        setSearchQuery(query);
+    };
 
     return (
         <div className="content-container">
@@ -15,10 +21,10 @@ const SoftwareNewGradPage = () => {
                 </h3>
             </div>
             <div className="search-bar-container">
-                <SearchBar />
+                <SearchBar onSearch={handleSearch} />
             </div>
             <div className="job-list-container">
-                <JobList />
+                <JobList searchQuery={searchQuery} />
             </div>
         </div>
     );
