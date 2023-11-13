@@ -1,8 +1,13 @@
 .search-bar-container {
-    margin-top: 20px; /* adjust as necessary */
+    margin-top: 0px; /* adjust as necessary */
     width: 100%; /* ensures full width */
     display: flex;
     justify-content: center;
+}
+
+.title-container {
+    margin-top: 30px; /* Increase as needed */
+    margin-bottom: 0px; /* Increase as needed */
 }
 
 .content-container {
@@ -11,6 +16,10 @@
     align-items: center;
     justify-content: flex-start;
     height: 100vh;
+}
+
+.large-title {
+    font-size: 2rem; /* or higher */
 }
 
 .job-list-container {

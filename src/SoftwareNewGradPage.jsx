@@ -9,6 +9,11 @@ const SoftwareNewGradPage = () => {
 
     return (
         <div className="content-container">
+            <div className="title-container">
+                <h3 className="large-title font-semibold text-gray-900 dark:text-white py-3">
+                    💻 Software Engineer Full-time Openings
+                </h3>
+            </div>
             <div className="search-bar-container">
                 <SearchBar />
             </div>
