@@ -1,0 +1,42 @@
+.job-list {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+}
+
+.job-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.job-list th,
+.job-list td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.job-list th {
+    background-color: #f2f2f2;
+}
+
+.job-list tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.job-list tr:hover {
+    background-color: #e8f4ff;
+}
+
+.job-list .new-job {
+    background-color: #e8f4ff;
+}
+
+.job-list .applied {
+    background-color: #e8ffe8;
+}
+
+.no-underline {
+    text-decoration: none;
+}
+
+/* Additional styling can be added here for sponsor icons, years of experience, etc. */
