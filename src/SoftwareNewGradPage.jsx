@@ -4,6 +4,7 @@ import Header from './Header';
 import AuthContext from './authContext';
 // import { JobType } from './JobType';
 import SearchBar from "./SearchBar";
+import JobList from "./JobList";
 
 const SoftwareNewGradPage = () => {
     const loggedIn = useContext(AuthContext);
@@ -11,6 +12,7 @@ const SoftwareNewGradPage = () => {
     return (
         <div className="parent-of-search-bar">
             <SearchBar />
+            <JobList></JobList>
         </div>
     );
 };
