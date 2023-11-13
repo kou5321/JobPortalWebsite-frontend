@@ -27,8 +27,8 @@ const Header = () => {
                 <nav className="navLinks">
                     <NavLink to="/software-newgrad" className="navLink">👩🏻‍💻 Software NewGrad</NavLink>
                     <NavLink to="/software-intern" className="navLink">🧑🏽‍💻 Software Intern</NavLink>
-                    <NavLink to="/product-fulltime" className="navLink">🙋🏼 Product Full-Time</NavLink>
-                    <NavLink to="/product-intern" className="navLink">🙋 Product Intern</NavLink>
+                    <NavLink to="/data-fulltime" className="navLink">🙋🏼 Data Full-Time</NavLink>
+                    <NavLink to="/data-intern" className="navLink">🙋 Data Intern</NavLink>
                 </nav>
                 <div>
                     <button onClick={handleLoginClick} className="loginBtn">Log In</button>
