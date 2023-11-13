@@ -98,11 +98,15 @@ const JobList = () => {
                     {jobPosts.map((job) => (
                         <tr key={job.id}>
                             <td>{job.company}</td>
-                            {job.apply_link ? (
-                                <a href={job.apply_link} target="_blank" rel="noopener noreferrer" className="no-underline">{job.title}</a>
-                            ) : (
-                                job.title
-                            )}
+                            <td>
+                                {job.apply_link ? (
+                                    <a href={job.apply_link} target="_blank" rel="noopener noreferrer" className="no-underline">
+                                        {job.title}
+                                    </a>
+                                ) : (
+                                    job.title
+                                )}
+                            </td>
                             <td>{job.yoe}</td>
                             {job.apply_link ? (<td>{formatDate(job.date_added)}</td>) : (<td>Closed</td>)}
                             <td>

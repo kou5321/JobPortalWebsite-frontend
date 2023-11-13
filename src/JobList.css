@@ -13,6 +13,7 @@
     text-align: left;
     padding: 8px;
     border-bottom: 1px solid #ddd;
+    vertical-align: middle;
 }
 
 .job-list th {
@@ -37,6 +38,8 @@
 
 .no-underline {
     text-decoration: none;
+    text-align: left;
+    padding: 8px;
 }
 
 /* Additional styling can be added here for sponsor icons, years of experience, etc. */

@@ -28,9 +28,11 @@
     display: flex;
     justify-content: center; /* Centers horizontally */
     padding: 1rem;
-    width: 70%; /* Adjust the width as necessary */
+    width: 100%; /* Adjust the width as necessary */
+    height: 40px;
     margin-left: auto; /* These two margin properties ensure */
     margin-right: auto; /* the container is centered horizontally */
+    margin-bottom: 30px;
 }
 
 .search-form {
