@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import logo from './assets/ameslogo.png'; // Your logo image path
 import './header.css'; // Your CSS file path
+import Login from './Login'
+import Register from './Register'
 
 const Header = () => {
     const navigate = useNavigate();
