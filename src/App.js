@@ -12,7 +12,7 @@ function App() {
     return (
         <Router>
             <div>
-                <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+                <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} user={user}  />
                 <Routes>
                     <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} />} />
                     <Route path="/register" element={<Register />} />

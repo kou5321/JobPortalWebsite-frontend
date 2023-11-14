@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import logo from './assets/ameslogo.png'; // Your logo image path
 import './header.css'; // Your CSS file path
 
-const Header = ({ isLoggedIn, setIsLoggedIn }) => {
+const Header = ({ isLoggedIn, setIsLoggedIn, user }) => {
     const navigate = useNavigate();
 
     const handleLoginClick = () => {
@@ -33,7 +33,10 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
                 </nav>
                 <div>
                     {isLoggedIn ? (
-                        <button onClick={() => setIsLoggedIn(false)} className="loginBtn">Log Out</button>
+                        <div>
+                            <span className="username">Hello, {user?.username}!</span>
+                            <button onClick={() => setIsLoggedIn(false)} className="loginBtn">Log Out</button>
+                        </div>
                     ) : (
                         <>
                             <button onClick={() => navigate('/login')} className="loginBtn">Log In</button>
