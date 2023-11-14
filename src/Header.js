@@ -3,9 +3,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import logo from './assets/ameslogo.png'; // Your logo image path
 import './header.css'; // Your CSS file path
 
-const Header = () => {
+const Header = ({ isLoggedIn, setIsLoggedIn }) => {
     const navigate = useNavigate();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const handleLoginClick = () => {
         navigate('/login');
@@ -34,11 +33,11 @@ const Header = () => {
                 </nav>
                 <div>
                     {isLoggedIn ? (
-                        <button onClick={handleLogoutClick} className="loginBtn">Log Out</button>
+                        <button onClick={() => setIsLoggedIn(false)} className="loginBtn">Log Out</button>
                     ) : (
                         <>
-                            <button onClick={handleLoginClick} className="loginBtn">Log In</button>
-                            <button onClick={handleRegisterClick} className="loginBtn">Register</button>
+                            <button onClick={() => navigate('/login')} className="loginBtn">Log In</button>
+                            <button onClick={() => navigate('/register')} className="loginBtn">Register</button>
                         </>
                     )}
                 </div>

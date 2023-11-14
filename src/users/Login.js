@@ -13,7 +13,6 @@ const Login = ({ setIsLoggedIn, setUser }) => {
         e.preventDefault();
         try {
             const response = await UserService.login(username, password);
-            console.log(response.data);
             setIsLoggedIn(true);
             setUser(response.data);
             navigate('/software-newgrad');
