@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import logo from './assets/ameslogo.png'; // Your logo image path
 import './header.css'; // Your CSS file path
-import Login from './Login'
-import Register from './Register'
 
 const Header = () => {
     const navigate = useNavigate();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const handleLoginClick = () => {
-        // Assuming you have a route set up for login
         navigate('/login');
     };
 
     const handleRegisterClick = () => {
-        // Assuming you have a route set up for register
         navigate('/register');
+    };
+
+    const handleLogoutClick = () => {
+        setIsLoggedIn(false);
     };
 
     return (
@@ -32,8 +33,14 @@ const Header = () => {
                     <NavLink to="/data-intern" className="navLink">🙋 Data Intern</NavLink>
                 </nav>
                 <div>
-                    <button onClick={handleLoginClick} className="loginBtn">Log In</button>
-                    <button onClick={handleRegisterClick} className="loginBtn">Register</button>
+                    {isLoggedIn ? (
+                        <button onClick={handleLogoutClick} className="loginBtn">Log Out</button>
+                    ) : (
+                        <>
+                            <button onClick={handleLoginClick} className="loginBtn">Log In</button>
+                            <button onClick={handleRegisterClick} className="loginBtn">Register</button>
+                        </>
+                    )}
                 </div>
             </div>
         </header>

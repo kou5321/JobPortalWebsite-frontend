@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Header';
 import Register from './users/Register';
@@ -7,15 +7,16 @@ import Login from './users/Login';
 // Import other necessary components
 
 function App() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [user, setUser] = useState(null);
     return (
         <Router>
             <div>
                 <Header />
                 <Routes>
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/software-newgrad" element={<SoftwareNewGradPage />} />
-                    {/* Other routes */}
                 </Routes>
             </div>
         </Router>
