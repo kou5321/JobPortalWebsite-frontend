@@ -6,6 +6,7 @@ const Register = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(''); // For displaying any error messages
+    const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -14,10 +15,13 @@ const Register = () => {
         try {
             const response = await UserService.register(email, username, password);
             console.log('Registration response:', response.data);
+            setRegistrationSuccess(true);
             // Handle registration success
             // You may want to redirect the user or clear the form here
         } catch (error) {
             console.error('Registration error:', error);
+            setRegistrationSuccess(false);
+
             if (error.response) {
                 // The request was made and the server responded with a status code
                 // that falls out of the range of 2xx
@@ -45,6 +49,7 @@ const Register = () => {
                 <input className="form-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" required />
                 <input className="form-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
                 <button className="form-button" type="submit">Register</button>
+                {registrationSuccess && <div className="success-message" >Registration successful!</div>}
             </form>
             {error && <p className="error-message">{error}</p>}
         </div>

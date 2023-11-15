@@ -78,11 +78,10 @@
     color: #4a4a4a;            /* Set the text color */
     margin-right: 10px;     /* Add space to the right */
     font-weight: 500;     /* Make the font bold */
-    padding: 8px 12px;           /* Add some padding around the text */
+        /*padding: 8px 12px;           !* Add some padding around the text *!*/
     background-color: #f0f0f0; /* Light background color */
     border-radius: 5px;     /* Rounded corners */
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-
 }
 
 .header > .container > div:last-child {
