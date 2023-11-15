@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../authContext.js'; // Import useAuth hook
 import UserService from './UserService';
 import '../App.css';
 
-const Login = ({ setIsLoggedIn, setUser }) => {
+const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
+    const { login } = useAuth(); // Use login function from context
+
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
             const response = await UserService.login(username, password);
-            setIsLoggedIn(true);
-            setUser(response.data);
+            login(response.data); // Use login from AuthContext
             navigate('/software-newgrad');
         } catch (error) {
             console.error(error);
             setErrorMessage('Username or password not found');
         }
     };
-
 
     return (
         <div className="form-container">

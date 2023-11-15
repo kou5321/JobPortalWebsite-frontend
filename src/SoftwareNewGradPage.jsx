@@ -1,11 +1,10 @@
 import React, { useState, useContext } from 'react';
-import AuthContext from './authContext';
+import { useAuth } from './authContext';
 // import { JobType } from './JobType';
 import SearchBar from "./SearchBar";
 import JobList from "./JobList";
 
 const SoftwareNewGradPage = () => {
-    const loggedIn = useContext(AuthContext);
 
     const [searchQuery, setSearchQuery] = useState('');
 

@@ -1,22 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import logo from './assets/ameslogo.png'; // Your logo image path
-import './header.css'; // Your CSS file path
+import { useAuth } from './authContext'; // Correct named import of useAuth
+import logo from './assets/ameslogo.png';
+import './header.css';
 
-const Header = ({ isLoggedIn, setIsLoggedIn, user }) => {
+const Header = () => {
     const navigate = useNavigate();
     const [showDropdown, setShowDropdown] = useState(false);
-
-    const handleLoginClick = () => {
-        navigate('/login');
-    };
-
-    const handleRegisterClick = () => {
-        navigate('/register');
-    };
+    const { isLoggedIn, user, logout } = useAuth(); // Use the context here
 
     const handleLogoutClick = () => {
-        setIsLoggedIn(false);
+        logout(); // Use the logout function from context
     };
 
     return (
@@ -34,23 +28,22 @@ const Header = ({ isLoggedIn, setIsLoggedIn, user }) => {
                 </nav>
                 <div>
                     {isLoggedIn ? (
-                        <div className="user-menu">
-                        <span
-                            className="username"
+                        <div
+                            className="user-menu"
                             onMouseOver={() => setShowDropdown(true)}
-                            onMouseLeave={() => setShowDropdown(true)}
+                            onMouseLeave={() => setShowDropdown(false)}
                         >
-                            Welcome! {user?.username}
-                        </span>
+                            <span className="username">
+                                Welcome! {user?.username}
+                            </span>
                             {showDropdown && (
                                 <div className="dropdown-menu">
-                                    {/*TODO: add a dash board*/}
                                     <div className="dropdown-item" onClick={() => navigate('/dashboard')}>Dashboard</div>
                                     <div className="dropdown-item" onClick={handleLogoutClick}>Log Out</div>
                                 </div>
                             )}
                         </div>
-                    )  : (
+                    ) : (
                         <>
                             <button onClick={() => navigate('/login')} className="loginBtn">Log In</button>
                             <button onClick={() => navigate('/register')} className="loginBtn">Register</button>
