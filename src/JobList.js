@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './JobList.css';
 
 // JobList component
-const JobList = ({searchQuery}) => {
+const JobList = ({ searchQuery, isLoggedIn }) => {
     const [jobPosts, setJobPosts] = useState([]);
 
     useEffect(() => {
@@ -26,6 +26,15 @@ const JobList = ({searchQuery}) => {
         };
         fetchJobPosts();
     }, [searchQuery]); // Dependency array includes searchQuery
+
+    const handleCheckboxChange = (jobId) => {
+        if (!isLoggedIn) {
+            alert("Please log in");
+            return;
+        }
+        // Logic to handle the checkbox change if the user is logged in
+        // For example, updating the job's applied status
+    };
 
     function formatDate(dateString) {
         const date = new Date(dateString);
@@ -64,8 +73,8 @@ const JobList = ({searchQuery}) => {
                             <td>
                                 <input
                                     type="checkbox"
-                                    // checked={job.applied} // assuming 'applied' is a boolean property of the job object
-                                    // onChange={() => handleCheckboxChange(job.id)} // handleCheckboxChange needs to be implemented
+                                    // checked={job.applied} // assuming 'applied' is a boolean property
+                                    onChange={() => handleCheckboxChange(job.id)}
                                 />
                             </td>
                         </tr>

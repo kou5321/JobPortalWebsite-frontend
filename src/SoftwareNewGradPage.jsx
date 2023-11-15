@@ -6,6 +6,8 @@ import JobList from "./JobList";
 
 const SoftwareNewGradPage = () => {
 
+    const { isLoggedIn } = useAuth();
+
     const [searchQuery, setSearchQuery] = useState('');
 
     const handleSearch = (query) => {
@@ -23,7 +25,7 @@ const SoftwareNewGradPage = () => {
                 <SearchBar onSearch={handleSearch} />
             </div>
             <div className="job-list-container">
-                <JobList searchQuery={searchQuery} />
+                <JobList searchQuery={searchQuery} isLoggedIn={isLoggedIn} />
             </div>
         </div>
     );
