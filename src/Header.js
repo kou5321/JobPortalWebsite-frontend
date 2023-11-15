@@ -5,6 +5,7 @@ import './header.css'; // Your CSS file path
 
 const Header = ({ isLoggedIn, setIsLoggedIn, user }) => {
     const navigate = useNavigate();
+    const [showDropdown, setShowDropdown] = useState(false);
 
     const handleLoginClick = () => {
         navigate('/login');
@@ -33,11 +34,23 @@ const Header = ({ isLoggedIn, setIsLoggedIn, user }) => {
                 </nav>
                 <div>
                     {isLoggedIn ? (
-                        <div>
-                            <span className="username">Hello, {user?.username}!</span>
-                            <button onClick={() => setIsLoggedIn(false)} className="loginBtn">Log Out</button>
+                        <div className="user-menu">
+                        <span
+                            className="username"
+                            onMouseOver={() => setShowDropdown(true)}
+                            onMouseLeave={() => setShowDropdown(true)}
+                        >
+                            Welcome! {user?.username}
+                        </span>
+                            {showDropdown && (
+                                <div className="dropdown-menu">
+                                    {/*TODO: add a dash board*/}
+                                    <div className="dropdown-item" onClick={() => navigate('/dashboard')}>Dashboard</div>
+                                    <div className="dropdown-item" onClick={handleLogoutClick}>Log Out</div>
+                                </div>
+                            )}
                         </div>
-                    ) : (
+                    )  : (
                         <>
                             <button onClick={() => navigate('/login')} className="loginBtn">Log In</button>
                             <button onClick={() => navigate('/register')} className="loginBtn">Register</button>
