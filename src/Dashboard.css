@@ -1,0 +1,28 @@
+/*!* Ensure that html and body elements take up the full viewport height *!*/
+/*html, body {*/
+/*    height: 100%;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+
+/*!* If you have a root div (e.g., <div id="root">), ensure it also takes full height *!*/
+/*#root {*/
+/*    height: 100%;*/
+/*}*/
+
+/*!* Dashboard container styles *!*/
+/*.dashboard-container {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    min-height: 80vh; !* Adjust based on your layout *!*/
+/*    text-align: center;*/
+/*    width: 100%;*/
+/*}*/
+
+/*!* Job list styles *!*/
+/*.job-list {*/
+/*    width: 100%;*/
+/*    max-width: 800px; !* Adjust this as needed *!*/
+/*}*/

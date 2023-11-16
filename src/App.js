@@ -4,7 +4,7 @@ import Header from './Header';
 import Register from './users/Register';
 import SoftwareNewGradPage from "./SoftwareNewGradPage";
 import Login from './users/Login';
-// Import other necessary components
+import Dashboard from './Dashboard.js';
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,6 +17,7 @@ function App() {
                     <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/software-newgrad" element={<SoftwareNewGradPage />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
                 </Routes>
             </div>
         </Router>

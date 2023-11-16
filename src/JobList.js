@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './JobList.css';
+import { useAuth } from './authContext.js';
+import axios from 'axios';
 
 // JobList component
-const JobList = ({ searchQuery, isLoggedIn }) => {
+const JobList = ({ searchQuery }) => {
     const [jobPosts, setJobPosts] = useState([]);
+    const { user, isLoggedIn } = useAuth();
 
     useEffect(() => {
         const fetchJobPosts = async () => {
@@ -24,17 +27,49 @@ const JobList = ({ searchQuery, isLoggedIn }) => {
                 console.error('Error fetching job posts:', error);
             }
         };
-        fetchJobPosts();
-    }, [searchQuery]); // Dependency array includes searchQuery
 
-    const handleCheckboxChange = (jobId) => {
+        const fetchAppliedJobs = async () => {
+            if (isLoggedIn && user) {
+                try {
+                    const response = await axios.get(`http://localhost:8080/users/${user.id}/get-user-applied-list`);
+                    const appliedJobs = new Set(response.data.map(job => job.id));
+
+                    setJobPosts(prevJobs => prevJobs.map(job => ({
+                        ...job,
+                        hasUserApplied: appliedJobs.has(job.id),
+                    })));
+                } catch (error) {
+                    console.error('Error fetching applied jobs:', error);
+                }
+            }
+        };
+        fetchJobPosts();
+        fetchAppliedJobs();
+    }, [searchQuery, isLoggedIn, user]); // Dependency array includes searchQuery
+
+    const handleCheckboxChange = async (jobId, hasApplied) => {
         if (!isLoggedIn) {
             alert("Please log in");
             return;
         }
-        // Logic to handle the checkbox change if the user is logged in
-        // For example, updating the job's applied status
+        try {
+            // Construct the URL with jobPostingId as a query parameter
+            const url = `http://localhost:8080/users/${user.id}/${hasApplied ? 'unmark-applied-job' : 'mark-applied-job'}?jobPostingId=${jobId}`;
+
+            // Determine the method based on whether the job is currently marked as applied
+            const method = hasApplied ? 'delete' : 'post';
+
+            await axios({ method, url });
+
+            // Update the jobPosts state to reflect the change
+            setJobPosts(prevJobs => prevJobs.map(job =>
+                job.id === jobId ? {...job, hasUserApplied: !hasApplied} : job
+            ));
+        } catch (error) {
+            console.error('Error updating job application status:', error);
+        }
     };
+
 
     function formatDate(dateString) {
         const date = new Date(dateString);
@@ -73,8 +108,8 @@ const JobList = ({ searchQuery, isLoggedIn }) => {
                             <td>
                                 <input
                                     type="checkbox"
-                                    // checked={job.applied} // assuming 'applied' is a boolean property
-                                    onChange={() => handleCheckboxChange(job.id)}
+                                    checked={job.hasUserApplied}
+                                    onChange={() => handleCheckboxChange(job.id, job.hasUserApplied)}
                                 />
                             </td>
                         </tr>
