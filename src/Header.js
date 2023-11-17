@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from './authContext'; // Correct named import of useAuth
-import logo from './assets/ameslogo.png';
+import logo from './assets/logo.png';
 import './header.css';
 
 const Header = () => {
