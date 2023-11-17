@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Ensure you have axios installed
 import './App.css';
+import {useAuth} from "./authContext";
 
 const JobPostingForm = () => {
     const [jobPost, setJobPost] = useState({
@@ -15,6 +16,13 @@ const JobPostingForm = () => {
         apply_link: ''
     });
     const navigate = useNavigate();
+    const { user } = useAuth();
+
+    useEffect(() => {
+        if (!user || !user.roles.includes('ADMIN')) {
+            navigate('/'); // redirect to home or another appropriate page
+        }
+    }, [user, navigate]);
 
     const handleChange = (e) => {
         setJobPost({ ...jobPost, [e.target.name]: e.target.value });
@@ -24,7 +32,7 @@ const JobPostingForm = () => {
         e.preventDefault();
         try {
             // Call your API here to submit   the jobPost data
-            await axios.post('http://localhost:8080/addJobPost', jobPost);
+            await axios.post('http://localhost:8080/addJobPost', jobPost, { withCredentials: true });
             navigate('/software-newgrad'); // Redirect after successful submission
         } catch (error) {
             console.error('Error submitting job post:', error);
