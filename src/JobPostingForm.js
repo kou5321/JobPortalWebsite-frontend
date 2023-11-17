@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Ensure you have axios installed
+import './App.css';
 
 const JobPostingForm = () => {
     const [jobPost, setJobPost] = useState({
@@ -32,14 +33,15 @@ const JobPostingForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input name="company" value={jobPost.company} onChange={handleChange} placeholder="Company" />
-            <input name="category" value={jobPost.category} onChange={handleChange} placeholder="Category" />
-            <input name="title" value={jobPost.title} onChange={handleChange} placeholder="Job Title" />
-            <input name="yoe" value={jobPost.yoe} onChange={handleChange} placeholder="Years of Experience" />
-            <input name="location" value={jobPost.location} onChange={handleChange} placeholder="Location" />
-            <input name="sponsor" value={jobPost.sponsor} onChange={handleChange} placeholder="Sponsor" />
-            <input name="apply_link" value={jobPost.apply_link} onChange={handleChange} placeholder="Apply Link" />
+        <form onSubmit={handleSubmit} className="job-posting-form">
+            <h2>Add Job post</h2>
+            <input type="text" name="company" value={jobPost.company} onChange={handleChange} placeholder="Company" />
+            <input type="text" name="category" value={jobPost.category} onChange={handleChange} placeholder="Category" />
+            <input type="text" name="title" value={jobPost.title} onChange={handleChange} placeholder="Job Title" />
+            <input type="text" name="yoe" value={jobPost.yoe} onChange={handleChange} placeholder="Years of Experience" />
+            <input type="text" name="location" value={jobPost.location} onChange={handleChange} placeholder="Location" />
+            <input type="text" name="sponsor" value={jobPost.sponsor} onChange={handleChange} placeholder="Sponsor" />
+            <input type="text" name="apply_link" value={jobPost.apply_link} onChange={handleChange} placeholder="Apply Link" />
             <button type="submit">Submit</button>
         </form>
     );
