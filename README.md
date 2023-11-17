@@ -56,7 +56,8 @@ http://localhost:3000
 - react-router-dom - For routing and navigation.
 
 ## demo pic
-![demo](demo.png)
+![demo](demo2.png)
+![demo2](demo3.png)
 
 ## Acknowledgement 
 This project's design was inspired by the layout and functionality of [JobPulse](http://www.jobpulse.fyi), with the aim to create a tailored job search experience for new graduates and interns in the tech industry.
