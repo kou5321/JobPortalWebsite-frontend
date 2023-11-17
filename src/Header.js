@@ -12,6 +12,10 @@ const Header = () => {
     const handleLogoutClick = () => {
         logout(); // Use the logout function from context
     };
+    const isAdmin = () => {
+        return isLoggedIn && user?.roles?.includes('ADMIN');
+    };
+
 
     return (
         <header className="header">
@@ -39,6 +43,9 @@ const Header = () => {
                             {showDropdown && (
                                 <div className="dropdown-menu">
                                     <div className="dropdown-item" onClick={() => navigate('/dashboard')}>Dashboard</div>
+                                    {isAdmin() && ( // Check if the user is an admin before displaying this option
+                                        <div className="dropdown-item" onClick={() => navigate('/add-job-post')}>Add job post</div>
+                                    )}
                                     <div className="dropdown-item" onClick={handleLogoutClick}>Log Out</div>
                                 </div>
                             )}

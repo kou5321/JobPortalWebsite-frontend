@@ -1,0 +1,48 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios'; // Ensure you have axios installed
+
+const JobPostingForm = () => {
+    const [jobPost, setJobPost] = useState({
+        company: '',
+        category: '',
+        title: '',
+        yoe: '',
+        date_added: '', // Add if needed, or handle it in the backend
+        location: '',
+        sponsor: '',
+        apply_link: ''
+    });
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        setJobPost({ ...jobPost, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            // Call your API here to submit   the jobPost data
+            await axios.post('http://localhost:8080/addJobPost', jobPost);
+            navigate('/software-newgrad'); // Redirect after successful submission
+        } catch (error) {
+            console.error('Error submitting job post:', error);
+            // Handle submission error (e.g., show an error message)
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <input name="company" value={jobPost.company} onChange={handleChange} placeholder="Company" />
+            <input name="category" value={jobPost.category} onChange={handleChange} placeholder="Category" />
+            <input name="title" value={jobPost.title} onChange={handleChange} placeholder="Job Title" />
+            <input name="yoe" value={jobPost.yoe} onChange={handleChange} placeholder="Years of Experience" />
+            <input name="location" value={jobPost.location} onChange={handleChange} placeholder="Location" />
+            <input name="sponsor" value={jobPost.sponsor} onChange={handleChange} placeholder="Sponsor" />
+            <input name="apply_link" value={jobPost.apply_link} onChange={handleChange} placeholder="Apply Link" />
+            <button type="submit">Submit</button>
+        </form>
+    );
+};
+
+export default JobPostingForm;

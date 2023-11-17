@@ -4,7 +4,7 @@ const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({ roles: [] });
 
     const login = (userData) => {
         setIsLoggedIn(true);
@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         setIsLoggedIn(false);
-        setUser(null);
+        setUser({ roles: [] });
     };
 
     return (

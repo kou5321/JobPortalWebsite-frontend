@@ -16,7 +16,12 @@ const Login = () => {
         e.preventDefault();
         try {
             const response = await UserService.login(username, password);
-            login(response.data); // Use login from AuthContext
+            const roles = response.data.roles.map(role => role.name);
+            const userForContext = {
+                ...response.data,
+                roles: roles
+            };
+            login(userForContext);
             navigate('/software-newgrad');
         } catch (error) {
             console.error(error);
