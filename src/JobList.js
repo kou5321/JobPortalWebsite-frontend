@@ -70,6 +70,18 @@ const JobList = ({ searchQuery }) => {
         }
     };
 
+    const handleJobClick = async (jobId) => {
+        if (isLoggedIn && user) {
+            try {
+                await axios.post(`http://localhost:8080/users/${user.id}/mark-viewed-job`, null, {
+                    params: { jobPostingId: jobId }
+                });
+            } catch (error) {
+                console.error('Error marking job as viewed:', error);
+            }
+        }
+    };
+
 
     function formatDate(dateString) {
         const date = new Date(dateString);
@@ -96,7 +108,7 @@ const JobList = ({ searchQuery }) => {
                             <td>{job.company}</td>
                             <td>
                                 {job.apply_link ? (
-                                    <a href={job.apply_link} target="_blank" rel="noopener noreferrer" className="no-underline">
+                                    <a href={job.apply_link} target="_blank" rel="noopener noreferrer" className="no-underline" onClick={() => handleJobClick(job.id)}>
                                         {job.title}
                                     </a>
                                 ) : (

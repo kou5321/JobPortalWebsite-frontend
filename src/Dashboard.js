@@ -78,7 +78,27 @@ const Dashboard = () => {
                         <h2>Viewed Jobs</h2>
                         {viewedJobs.length > 0 ? (
                             <table>
-
+                                <thead>
+                                <tr>
+                                    <th>🏙️ Company</th>
+                                    <th>💼 Job</th>
+                                    <th>🔗 Link</th>
+                                    {/* TODO: add date applied */}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {viewedJobs.map(job => (
+                                    <tr key={job.id}>
+                                        <td>{job.company}</td>
+                                        <td>{job.title}</td>
+                                        <td>
+                                            {job.apply_link && (
+                                                <a href={job.apply_link} target="_blank" rel="noopener noreferrer">Apply Link</a>
+                                            )}
+                                        </td>
+                                    </tr>
+                                ))}
+                                </tbody>
                             </table>
                         ) : (
                             <p>You have not viewed any jobs yet.</p>
