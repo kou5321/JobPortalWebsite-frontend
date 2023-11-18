@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Ensure you have axios installed
-import './App.css';
-import {useAuth} from "./authContext";
+import '../styles/App.css';
+import {useAuth} from "../auth/authContext";
 
 const JobPostingForm = () => {
     const [jobPost, setJobPost] = useState({

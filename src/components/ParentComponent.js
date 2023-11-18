@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAuth } from "./authContext";
-import JobList from './JobList';
+import { useAuth } from "../auth/authContext";
+import JobList from '../pages/JobList';
 
 const ParentComponent = () => {
     const { isLoggedIn } = useAuth(); // Ensure this is getting the correct state

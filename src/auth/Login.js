@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../authContext.js'; // Import useAuth hook
+import { useAuth } from './authContext.js'; // Import useAuth hook
 import UserService from './UserService';
-import '../App.css';
+import '../styles/App.css';
 
 const Login = () => {
     const [username, setUsername] = useState('');

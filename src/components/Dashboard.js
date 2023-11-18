@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useAuth } from './authContext';
-import DashboardTabs from './DashboardTabs';
-import './JobList.css'; // Assuming this CSS styles the job list appropriately
-import './Dashboard.css';
+import { useAuth } from '../auth/authContext';
+import DashboardTabs from '../pages/DashboardTabs';
+import '../styles/JobList.css'; // Assuming this CSS styles the job list appropriately
+import '../styles/Dashboard.css';
 
 const Dashboard = () => {
     const [appliedJobs, setAppliedJobs] = useState([]);
@@ -32,11 +32,11 @@ const Dashboard = () => {
         return <div>Please log in to view your dashboard.</div>;
     }
 
-    function formatDate(dateString) {
-        const date = new Date(dateString);
-        const options = { year: 'numeric', month: 'short', day: 'numeric' };
-        return date.toLocaleDateString('en-US', options);
-    }
+    // function formatDate(dateString) {
+    //     const date = new Date(dateString);
+    //     const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    //     return date.toLocaleDateString('en-US', options);
+    // }
 
     return (
         <div className="dashboard-container">
@@ -49,9 +49,9 @@ const Dashboard = () => {
                             <table>
                                 <thead>
                                 <tr>
-                                    <th>🏙️ Company</th>
-                                    <th>💼 Job</th>
-                                    <th>🔗 Link</th>
+                                    <th><span role="img" aria-label="Software NewGrad">🏙️</span> Company</th>
+                                    <th><span role="img" aria-label="Software NewGrad">💼 </span>Job</th>
+                                    <th><span role="img" aria-label="Software NewGrad">🔗</span>Link</th>
                                     {/* TODO: add date applied */}
                                 </tr>
                                 </thead>
@@ -80,9 +80,9 @@ const Dashboard = () => {
                             <table>
                                 <thead>
                                 <tr>
-                                    <th>🏙️ Company</th>
-                                    <th>💼 Job</th>
-                                    <th>🔗 Link</th>
+                                    <th><span role="img" aria-label="Software NewGrad">🏙️</span> Company</th>
+                                    <th><span role="img" aria-label="Software NewGrad">💼 </span> Job</th>
+                                    <th><span role="img" aria-label="Software NewGrad">🔗</span> Link</th>
                                     {/* TODO: add date applied */}
                                 </tr>
                                 </thead>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './DashboardTabs.css'; // Import the CSS for styling
+import '../styles/DashboardTabs.css'; // Import the CSS for styling
 
 const DashboardTabs = ({ activeTab, setActiveTab }) => {
     return (

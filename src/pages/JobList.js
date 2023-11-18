@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './JobList.css';
-import { useAuth } from './authContext.js';
+import '../styles/JobList.css';
+import { useAuth } from '../auth/authContext.js';
 import axios from 'axios';
 
 // JobList component
@@ -95,11 +95,11 @@ const JobList = ({ searchQuery }) => {
                 <table>
                     <thead>
                     <tr>
-                        <th>🏙️ Company</th>
-                        <th>💼 Job</th>
-                        <th>🗓️ Yoe</th>
-                        <th>🕓 Posted</th>
-                        <th>⏫  Applied?</th>
+                        <th><span role="img" aria-label="Software NewGrad">🏙</span> Company</th>
+                        <th><span role="img" aria-label="Software NewGrad">💼</span> Job</th>
+                        <th><span role="img" aria-label="Software NewGrad">🗓️</span> Yoe</th>
+                        <th><span role="img" aria-label="Software NewGrad">🕓</span> Posted</th>
+                        <th><span role="img" aria-label="Software NewGrad">⏫</span>  Applied?</th>
                     </tr>
                     </thead>
                     <tbody>

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './Header';
-import Register from './users/Register';
-import SoftwareNewGradPage from "./SoftwareNewGradPage";
-import Login from './users/Login';
-import Dashboard from './Dashboard.js';
-import JobPostingForm from './JobPostingForm';
+import Header from './components/Header';
+import Register from './auth/Register';
+import SoftwareNewGradPage from "./pages/SoftwareNewGradPage";
+import Login from './auth/Login';
+import Dashboard from './components/Dashboard.js';
+import JobPostingForm from './pages/JobPostingForm';
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
