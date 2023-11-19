@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Register from './auth/Register.jsx';
 import SoftwareNewGradPage from "./pages/SoftwareNewGradPage";
 import Login from './auth/Login';
-import Dashboard from './components/Dashboard.js';
+import Dashboard from './pages/Dashboard.js';
 import JobPostingForm from './pages/JobPostingForm';
 
 function App() {

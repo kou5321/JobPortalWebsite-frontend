@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import UserService from './UserService';
 import '../styles/App.css';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     // State for registration
@@ -9,17 +10,18 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [registrationSuccess, setRegistrationSuccess] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (registrationSuccess) {
             const timer = setTimeout(() => {
-                window.location.href = 'http://localhost:3000/software-newgrad';
+                navigate('/software-newgrad');
             }, 2000);
 
             // Clear timeout if component unmounts
             return () => clearTimeout(timer);
         }
-    }, [registrationSuccess]);
+    }, [registrationSuccess, navigate]);
 
     const handleRegister = async (e) => {
         e.preventDefault();

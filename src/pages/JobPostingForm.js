@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // Ensure you have axios installed
+import axios from 'axios';
 import '../styles/App.css';
 import {useAuth} from "../auth/authContext";
 

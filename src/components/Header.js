@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useAuth } from '../auth/authContext'; // Correct named import of useAuth
+import { useAuth } from '../auth/authContext';
 import logo from '../assets/logo.png';
 import '../styles/header.css';
 
 const Header = () => {
     const navigate = useNavigate();
-    const [showDropdown, setShowDropdown] = useState(false);
-    const { isLoggedIn, user, logout } = useAuth(); // Use the context here
+    const [ showDropdown, setShowDropdown ] = useState(false);
+    const { isLoggedIn, user, logout } = useAuth();
 
     const handleLogoutClick = () => {
-        logout(); // Use the logout function from context
+        logout();
     };
     const isAdmin = () => {
         return isLoggedIn && user?.roles?.includes('ADMIN');

@@ -3,15 +3,12 @@ import '../styles/JobList.css';
 import { useAuth } from '../auth/authContext.js';
 import axios from 'axios';
 
-// JobList component
 const JobList = ({ searchQuery }) => {
     const [jobPosts, setJobPosts] = useState([]);
     const { user, isLoggedIn } = useAuth();
 
     useEffect(() => {
         const fetchJobPosts = async () => {
-            // Correctly use searchQuery in the API URL
-            console.log('Search Query:', searchQuery);
             const apiUrl = searchQuery
                 ? `http://localhost:8080/jobPost/search/text=${encodeURIComponent(searchQuery)}`
                 : 'http://localhost:8080/getAllJobPosts';

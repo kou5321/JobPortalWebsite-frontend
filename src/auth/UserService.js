@@ -7,7 +7,6 @@ const register = (email, username, password) => {
 };
 
 const login = (username, password) => {
-    // Updated to match backend's expected parameters
     return axios.post(`${API_URL}/users/login`, { username, password });
 };
 
