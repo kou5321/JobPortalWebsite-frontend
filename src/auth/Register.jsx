@@ -29,8 +29,6 @@ const Register = () => {
             const response = await UserService.register(email, username, password);
             console.log('Registration response:', response.data);
             setRegistrationSuccess(true);
-            // Handle registration success
-            // TODO: redirect the user or clear the form here
         } catch (error) {
             console.error('Registration error:', error);
             setRegistrationSuccess(false);
