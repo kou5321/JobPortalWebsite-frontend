@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/App.css';
-import {useAuth} from "../auth/authContext";
+import {useAuth} from "../auth/AuthProvider";
 
 const JobPostingForm = () => {
     const [jobPost, setJobPost] = useState({
@@ -32,6 +32,7 @@ const JobPostingForm = () => {
         e.preventDefault();
         try {
             // Call your API here to submit   the jobPost data
+            // TODO: You must login to use api
             await axios.post('http://localhost:8080/addJobPost', jobPost, { withCredentials: true });
             navigate('/software-newgrad'); // Redirect after successful submission
         } catch (error) {

@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import { useAuth } from '../auth/authContext';
 import SearchBar from "../components/SearchBar";
 import JobList from "./JobList";
 
 const SoftwareNewGradPage = () => {
-
-    const { isLoggedIn } = useAuth();
 
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -24,7 +21,7 @@ const SoftwareNewGradPage = () => {
                 <SearchBar onSearch={handleSearch} />
             </div>
             <div className="job-list-container">
-                <JobList searchQuery={searchQuery} isLoggedIn={isLoggedIn} />
+                <JobList searchQuery={searchQuery} />
             </div>
         </div>
     );

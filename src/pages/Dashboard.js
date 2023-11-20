@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useAuth } from '../auth/authContext';
+import { useAuth } from '../auth/AuthProvider';
 import DashboardTabs from '../components/DashboardTabs';
 import '../styles/JobList.css'; // Assuming this CSS styles the job list appropriately
 import '../styles/Dashboard.css';

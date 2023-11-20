@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from './authContext.js'; // Import useAuth hook
+import { useAuth } from './AuthProvider.js'; // Import useAuth hook
 import UserService from './UserService';
 import '../styles/App.css';
 
@@ -16,12 +16,14 @@ const Login = () => {
         e.preventDefault();
         try {
             const response = await UserService.login(username, password);
-            const roles = response.data.roles.map(role => role.name);
+            const token = response.data.jwtToken;
+            const roles = response.data.user.roles.map(role => role.name);
+            localStorage.setItem('token', response.data.jwtToken);
             const userForContext = {
-                ...response.data,
+                ...response.data.user,
                 roles: roles
             };
-            login(userForContext);
+            login(userForContext, token);
             navigate('/software-newgrad');
         } catch (error) {
             console.error(error);
