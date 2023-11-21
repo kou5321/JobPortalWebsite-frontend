@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Register from './auth/Register.jsx';
 import SoftwareNewGradPage from "./pages/SoftwareNewGradPage";
@@ -11,7 +11,7 @@ import { AuthProvider } from './auth/AuthProvider';
 function App() {
     return (
         <AuthProvider>
-            <Router>
+            <BrowserRouter>
                 <div>
                     <Header />
                     <Routes>
@@ -22,7 +22,7 @@ function App() {
                         <Route path="/add-job-post" element={<JobPostingForm />} />
                     </Routes>
                 </div>
-            </Router>
+            </BrowserRouter>
         </AuthProvider>
     );
 }
