@@ -1,6 +1,10 @@
 .job-list {
     font-family: 'Arial', sans-serif;
-    margin: 20px;
+    margin: 20px auto; /* Updated */
+    width: fit-content; /* Ensures the container fits the table width */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
 }
 
 .job-list table {
@@ -42,4 +46,29 @@
     padding: 8px;
 }
 
-/* Additional styling can be added here for sponsor icons, years of experience, etc. */
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination button {
+    border: none;
+    padding: 8px 16px;
+    margin: 0 4px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+    background-color: #ddd;
+}
+
+.pagination button.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.pagination button:focus {
+    outline: none;
+}
