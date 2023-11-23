@@ -18,8 +18,9 @@ const JobList = ({ searchQuery }) => {
 
             try {
                 const response = await axios.get(apiUrl);
-                setJobPosts(response.data.content);
-                setTotalPages(response.data.totalPages)
+                setJobPosts(response.data.content || []);
+                setTotalPages(response.data.totalPages || 0);
+                console.log(response);
             } catch (error) {
                 console.error('Error fetching job posts:', error);
             }
@@ -93,7 +94,7 @@ const JobList = ({ searchQuery }) => {
 
     return (
         <div className="job-list">
-            {jobPosts.length > 0 ? (
+            {jobPosts && jobPosts.length > 0 ? (
                 <table>
                     <thead>
                     <tr>
@@ -134,7 +135,7 @@ const JobList = ({ searchQuery }) => {
                 <p>Sorry. No results found for this keyword.</p>
             )}
             <div className="pagination">
-                {[...Array(totalPages).keys()].map(pageNumber => (
+                {[...Array(totalPages || 0).keys()].map(pageNumber => (
                     <button
                         key={pageNumber}
                         onClick={() => handlePageChange(pageNumber)}
