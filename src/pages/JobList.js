@@ -24,24 +24,33 @@ const JobList = ({ searchQuery }) => {
                 size: pageSize
             });
 
-            // If no country filters are selected, exit early
-            if (!countryFilter["United States"] && !countryFilter["Canada"]) {
-                setJobPosts([]);
-                setTotalPages(0);
-                return;
-            }
-
-            // Determine if a specific country filter is applied
-            if (countryFilter["United States"] !== countryFilter["Canada"]) {
-                const selectedCountry = countryFilter["United States"] ? 'United States' : 'Canada';
-                queryParams.append('country', selectedCountry);
-                apiUrl = `http://localhost:8080/jobPost/search`;
-                if (searchQuery) {
-                    queryParams.append('text', searchQuery);
+            if (searchQuery) {
+                // If there is a search query, always use the search endpoint
+                apiUrl = 'http://localhost:8080/jobPost/search';
+                queryParams.append('text', searchQuery);
+                if (countryFilter["United States"] && countryFilter["Canada"]) {}
+                // Append country filters regardless of their state
+                else if (countryFilter["United States"]) {
+                    queryParams.append('country', 'United States');
+                }
+                else if (countryFilter["Canada"]) {
+                    queryParams.append('country', 'Canada');
                 }
             } else {
-                // No specific country filter, use getAllJobPosts
-                apiUrl = `http://localhost:8080/getAllJobPosts`;
+                // No search query: use getAllJobPosts or filtered based on country
+                if (!countryFilter["United States"] && !countryFilter["Canada"]) {
+                    setJobPosts([]);
+                    setTotalPages(0);
+                    return; // Exit early if no country is selected
+                } else if (countryFilter["United States"] !== countryFilter["Canada"]) {
+                    // Only one country filter is selected
+                    apiUrl = 'http://localhost:8080/getAllJobPosts';
+                    const selectedCountry = countryFilter["United States"] ? 'United States' : 'Canada';
+                    queryParams.append('country', selectedCountry);
+                } else {
+                    // Both countries or none are selected
+                    apiUrl = 'http://localhost:8080/getAllJobPosts';
+                }
             }
 
             apiUrl += `?${queryParams}`;
@@ -54,6 +63,7 @@ const JobList = ({ searchQuery }) => {
                 console.error('Error fetching job posts:', error);
             }
         };
+
 
 
         const fetchAppliedJobs = async () => {
