@@ -72,3 +72,35 @@
 .pagination button:focus {
     outline: none;
 }
+.filters-container {
+    display: flex;
+    justify-content: space-evenly; /* Evenly distribute space between items */
+    align-items: center; /* Align the filters in the center vertically */
+    width: 100%; /* Ensure the container takes the full width */
+    margin-bottom: 20px; /* Space below the filter row */
+}
+
+.filter-item {
+    display: flex;
+    align-items: center; /* Align label and input in the center */
+    gap: 10px; /* Space between label and input */
+}
+
+/* Additional styles for the slider */
+.slider-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Style for the filter toggle buttons (checkboxes) */
+.filter-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between checkbox and label */
+}
+
+/* Ensure that the label and the slider are on the same line */
+.slider-container label,
+.slider-container input {
+    margin: 0;
+}

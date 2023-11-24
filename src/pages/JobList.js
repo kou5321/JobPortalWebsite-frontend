@@ -10,7 +10,7 @@ const JobList = ({ searchQuery }) => {
     const [pageSize, setPageSize] = useState(20);
     const [totalPages, setTotalPages] = useState(0);
     const { user, isLoggedIn } = useAuth();
-
+    const [yearsOfExperience, setYearsOfExperience] = useState(0);
     const [countryFilter, setCountryFilter] = useState({
         "United States": true,
         "Canada": true,
@@ -97,6 +97,10 @@ const JobList = ({ searchQuery }) => {
         setCurrentPage(newPage);
     };
 
+    const handleExperienceChange = (event) => {
+        setYearsOfExperience(event.target.value);
+    };
+
     const handleCheckboxChange = async (jobId, hasApplied) => {
         if (!isLoggedIn) {
             alert("Please log in");
@@ -141,7 +145,26 @@ const JobList = ({ searchQuery }) => {
 
     return (
         <div className="job-list">
-            <JobListFilter onFilterChange={setCountryFilter} />
+            <div className="filters-container">
+                <div className="filter-item filter-toggle">
+                    <JobListFilter onFilterChange={setCountryFilter} />
+                </div>
+                <div className="filter-item">
+                    <label htmlFor="yearsOfExperience">
+                        Year of Experience: &#8804; {yearsOfExperience}
+                    </label>
+                    <input
+                        type="range"
+                        id="yearsOfExperience"
+                        name="yearsOfExperience"
+                        min="0"
+                        max="5" // Set the max as per your requirements
+                        value={yearsOfExperience}
+                        onChange={handleExperienceChange}
+                    />
+                </div>
+            </div>
+
             {jobPosts && jobPosts.length > 0 ? (
                 <table>
                     <thead>
