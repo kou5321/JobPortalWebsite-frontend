@@ -21,8 +21,15 @@ const JobList = ({ searchQuery }) => {
             let apiUrl;
             let queryParams = new URLSearchParams({
                 page: currentPage,
-                size: pageSize
+                size: pageSize,
+                yoe: yearsOfExperience
             });
+
+            if (!countryFilter["United States"] && !countryFilter["Canada"]) {
+                setJobPosts([]);
+                setTotalPages(0);
+                return; // Exit early if no country is selected
+            }
 
             if (searchQuery) {
                 // If there is a search query, always use the search endpoint
@@ -38,20 +45,18 @@ const JobList = ({ searchQuery }) => {
                 }
             } else {
                 // No search query: use getAllJobPosts or filtered based on country
-                if (!countryFilter["United States"] && !countryFilter["Canada"]) {
-                    setJobPosts([]);
-                    setTotalPages(0);
-                    return; // Exit early if no country is selected
-                } else if (countryFilter["United States"] !== countryFilter["Canada"]) {
+                 if (countryFilter["United States"] !== countryFilter["Canada"]) {
                     // Only one country filter is selected
-                    apiUrl = 'http://localhost:8080/getAllJobPosts';
+                    apiUrl = 'http://localhost:8080/jobPost/search';
                     const selectedCountry = countryFilter["United States"] ? 'United States' : 'Canada';
                     queryParams.append('country', selectedCountry);
                 } else {
                     // Both countries or none are selected
-                    apiUrl = 'http://localhost:8080/getAllJobPosts';
+                    apiUrl = 'http://localhost:8080/jobPost/search';
                 }
             }
+
+            queryParams.append('maxYearsOfExperience', yearsOfExperience);
 
             apiUrl += `?${queryParams}`;
 
@@ -84,7 +89,7 @@ const JobList = ({ searchQuery }) => {
         fetchJobPosts().then(() => {
             fetchAppliedJobs();
         });
-    }, [searchQuery, currentPage, pageSize, isLoggedIn, user, countryFilter]);
+    }, [searchQuery, currentPage, pageSize, isLoggedIn, user, countryFilter, yearsOfExperience]);
 
     const toggleCountryFilter = (country) => {
         setCountryFilter({
