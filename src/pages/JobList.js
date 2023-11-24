@@ -18,31 +18,29 @@ const JobList = ({ searchQuery }) => {
 
     useEffect(() => {
         const fetchJobPosts = async () => {
-            if (!countryFilter["United States"] && !countryFilter["Canada"]) {
-                setJobPosts([]);
-                setTotalPages(0);
-                return; // Exit the function early if no country is selected
-            }
-
             let apiUrl;
             let queryParams = new URLSearchParams({
                 page: currentPage,
                 size: pageSize
             });
 
-            // Append country filters if they are checked
-            if (countryFilter["United States"] && countryFilter["Canada"]) {
-                // If both are selected, we can ignore the country parameter to get all jobs
-            } else if (countryFilter["United States"]) {
-                queryParams.append('country', 'United States');
-            } else if (countryFilter["Canada"]) {
-                queryParams.append('country', 'Canada');
+            // If no country filters are selected, exit early
+            if (!countryFilter["United States"] && !countryFilter["Canada"]) {
+                setJobPosts([]);
+                setTotalPages(0);
+                return;
             }
 
-            // Determine the base URL based on whether there is a search query
-            if (searchQuery) {
-                apiUrl = `http://localhost:8080/jobPost/search/text=${encodeURIComponent(searchQuery)}`;
+            // Determine if a specific country filter is applied
+            if (countryFilter["United States"] !== countryFilter["Canada"]) {
+                const selectedCountry = countryFilter["United States"] ? 'United States' : 'Canada';
+                queryParams.append('country', selectedCountry);
+                apiUrl = `http://localhost:8080/jobPost/search`;
+                if (searchQuery) {
+                    queryParams.append('text', searchQuery);
+                }
             } else {
+                // No specific country filter, use getAllJobPosts
                 apiUrl = `http://localhost:8080/getAllJobPosts`;
             }
 
@@ -56,6 +54,7 @@ const JobList = ({ searchQuery }) => {
                 console.error('Error fetching job posts:', error);
             }
         };
+
 
         const fetchAppliedJobs = async () => {
             if (isLoggedIn && user) {
