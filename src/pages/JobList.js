@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/JobList.css';
 import { useAuth } from '../auth/AuthProvider';
 import axios from "axios";
+import JobListFilter from "../components/JobListFilter";
 
 const JobList = ({ searchQuery }) => {
     const [jobPosts, setJobPosts] = useState([]);
@@ -10,17 +11,47 @@ const JobList = ({ searchQuery }) => {
     const [totalPages, setTotalPages] = useState(0);
     const { user, isLoggedIn } = useAuth();
 
+    const [countryFilter, setCountryFilter] = useState({
+        "United States": true,
+        "Canada": true,
+    });
+
     useEffect(() => {
         const fetchJobPosts = async () => {
-            const apiUrl = searchQuery
-                ? `http://localhost:8080/jobPost/search/text=${encodeURIComponent(searchQuery)}&page=${currentPage}&size=${pageSize}`
-                : `http://localhost:8080/getAllJobPosts?page=${currentPage}&size=${pageSize}`;
+            if (!countryFilter["United States"] && !countryFilter["Canada"]) {
+                setJobPosts([]);
+                setTotalPages(0);
+                return; // Exit the function early if no country is selected
+            }
+
+            let apiUrl;
+            let queryParams = new URLSearchParams({
+                page: currentPage,
+                size: pageSize
+            });
+
+            // Append country filters if they are checked
+            if (countryFilter["United States"] && countryFilter["Canada"]) {
+                // If both are selected, we can ignore the country parameter to get all jobs
+            } else if (countryFilter["United States"]) {
+                queryParams.append('country', 'United States');
+            } else if (countryFilter["Canada"]) {
+                queryParams.append('country', 'Canada');
+            }
+
+            // Determine the base URL based on whether there is a search query
+            if (searchQuery) {
+                apiUrl = `http://localhost:8080/jobPost/search/text=${encodeURIComponent(searchQuery)}`;
+            } else {
+                apiUrl = `http://localhost:8080/getAllJobPosts`;
+            }
+
+            apiUrl += `?${queryParams}`;
 
             try {
                 const response = await axios.get(apiUrl);
                 setJobPosts(response.data.content || []);
                 setTotalPages(response.data.totalPages || 0);
-                console.log(response);
             } catch (error) {
                 console.error('Error fetching job posts:', error);
             }
@@ -44,7 +75,14 @@ const JobList = ({ searchQuery }) => {
         fetchJobPosts().then(() => {
             fetchAppliedJobs();
         });
-    }, [searchQuery, currentPage, pageSize, isLoggedIn, user]);
+    }, [searchQuery, currentPage, pageSize, isLoggedIn, user, countryFilter]);
+
+    const toggleCountryFilter = (country) => {
+        setCountryFilter({
+            ...countryFilter,
+            [country]: !countryFilter[country],
+        });
+    };
 
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
@@ -94,6 +132,7 @@ const JobList = ({ searchQuery }) => {
 
     return (
         <div className="job-list">
+            <JobListFilter onFilterChange={setCountryFilter} />
             {jobPosts && jobPosts.length > 0 ? (
                 <table>
                     <thead>
