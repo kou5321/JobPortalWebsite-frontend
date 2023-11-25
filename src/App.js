@@ -6,6 +6,7 @@ import SoftwareNewGradPage from "./pages/SoftwareNewGradPage";
 import Login from './auth/Login';
 import Dashboard from './pages/Dashboard.js';
 import JobPostingForm from './pages/JobPostingForm';
+import MainPage from "./pages/MainPage";
 import { AuthProvider } from './auth/AuthProvider';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
                 <div>
                     <Header />
                     <Routes>
+                        <Route path="/" element = {<MainPage/>} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/software-newgrad" element={<SoftwareNewGradPage />} />

@@ -22,7 +22,7 @@ const Header = () => {
             <div className="container">
                 <div className="logoAndTitle">
                     <img src={logo} alt="AMES Logo" className="logo" />
-                    <NavLink to="/software-newgrad" className="appTitle ml-2">JobPortal</NavLink>
+                    <NavLink to="/" className="appTitle ml-2">JobPortal</NavLink>
                 </div>
                 <nav className="navLinks">
                     <NavLink to="/software-newgrad" className="navLink"><span role="img" aria-label="Software NewGrad">👩🏻‍💻</span> Software NewGrad</NavLink>

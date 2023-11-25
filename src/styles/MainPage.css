@@ -1,0 +1,110 @@
+.main-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers vertically */
+    align-items: center; /* Centers horizontally */
+    text-align: center;
+    min-height: 80vh; /* Use at least the full height of the viewport */
+    padding: 20px; /* Adjust as needed */
+}
+
+/* Style for the title and subtitle */
+.main-page h1 {
+    font-size: 2.5rem; /* Adjust the size as needed */
+    font-weight: 700; /* Makes the font bolder */
+    letter-spacing: 1.5px; /* Adds spacing between letters */
+    color: #333; /* Dark color for the text, which you can adjust */
+    /* Adds space below the heading */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Optional: Adds subtle shadow to the text */
+    max-width: 1000px; /* Adjust as needed, or remove if you want it to span the full width */
+    line-height: 1.2; /* Adjusts the line height for better readability */
+    /* Adds space above the heading */
+    /* Combined with margin-right, centers the heading */
+    /* Centers the heading */
+    margin: 30px auto;
+}
+
+.main-page p {
+    font-weight: 500;
+    font-size: 1.1rem; /* Adjust the font size to make it readable */
+    color: #4a4a4a; /* A softer color that's easier on the eyes than pure black */
+    line-height: 1.6; /* Improves readability by adding space between lines */
+    max-width: 800px; /* Constrain the width for optimal line length */
+    margin: 20px auto; /* Add margin above and below, and center horizontally */
+    padding: 0 15px; /* Add padding to prevent text from touching the edges */
+    text-align: center; /* Center the text */
+}
+
+/* Style for the tracking info section */
+.tracking-info {
+    margin: 20px 0; /* Adjust as needed */
+    font-size: 1.5em; /* Adjust as needed */
+}
+
+/* Style for the button */
+.update-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 20px 0;
+    border-radius: 5px;
+    /*text-decoration: none; !* Remove underline from links *!*/
+    display: inline-block; /* Needed to apply padding and centering */
+}
+
+.update-button:hover {
+    background-color: #0056b3;
+}
+
+/* Style for the company logos container */
+.company-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* This will allow logos to wrap onto the next line if needed */
+    gap: 20px; /* Adjust as needed */
+    margin-top: 120px; /* Increase this value to push the logos further down */
+}
+
+/* Style for the tracking info section */
+.tracking-info .company-number {
+    font-weight: bold;
+    color: #007bff; /* Blue color */
+    text-decoration: underline; /* Creates the underscore */
+}
+
+/* MainPage.css */
+
+.underline {
+    text-decoration: underline;
+    text-decoration-color: #007bff; /* Adjust underline color as needed */
+    text-decoration-thickness: 2px; /* Adjust underline thickness as needed */
+    text-underline-offset: 3px; /* Adjust the offset of the underline */
+}
+
+/* You can adjust the offset by using `text-underline-offset` property (Note: it's not supported in all browsers) */
+.underline-offset-3 {
+    text-underline-offset: 3px;
+}
+
+/* The `decoration-8` class seems to indicate a thickness of 8, which can be achieved with the `text-decoration-thickness` property */
+.decoration-8 {
+    text-decoration-thickness: 8px;
+}
+
+/* You can define the blue color for your underline */
+.decoration-blue-500 {
+    text-decoration-color: #3b82f6; /* This is an example blue color */
+}
+
+/* For dark mode decoration, you would need to implement a mechanism to toggle the class based on your theme */
+.dark .decoration-blue-600 {
+    text-decoration-color: #2563eb; /* Darker blue color for dark mode */
+}
+
+@media (max-width: 768px) {
+    .company-logos {
+        margin-top: 20px; /* Smaller margin for smaller screens */
+    }
+}
