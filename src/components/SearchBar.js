@@ -6,9 +6,7 @@ const SearchBar = ({ onSearch }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (onSearch && searchTerm) {
-            onSearch(searchTerm);
-        }
+        onSearch(searchTerm);
     };
 
     return (
