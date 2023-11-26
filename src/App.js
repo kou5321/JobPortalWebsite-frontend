@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard.js';
 import JobPostingForm from './pages/JobPostingForm';
 import MainPage from "./pages/MainPage";
 import { AuthProvider } from './auth/AuthProvider';
+import ProtectedRoute from "./auth/ProtectedRoute";
 
 function App() {
     return (
@@ -21,7 +22,9 @@ function App() {
                         <Route path="/register" element={<Register />} />
                         <Route path="/software-newgrad" element={<SoftwareNewGradPage />} />
                         <Route path="/dashboard" element={<Dashboard />} />
-                        <Route path="/add-job-post" element={<JobPostingForm />} />
+                        <Route element={<ProtectedRoute allowedRoles={['ADMIN']} />}>
+                            <Route path="/add-job-post" element={<JobPostingForm />} />
+                        </Route>
                     </Routes>
                 </div>
             </BrowserRouter>

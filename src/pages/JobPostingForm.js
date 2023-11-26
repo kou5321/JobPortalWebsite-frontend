@@ -28,20 +28,31 @@ const JobPostingForm = () => {
         setJobPost({ ...jobPost, [e.target.name]: e.target.value });
     };
 
+// Inside your JobPostingForm component
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            // Call your API here to submit   the jobPost data
-            // TODO: You must login to use api
-            await axios.post('http://localhost:8080/addJobPost', jobPost, { withCredentials: true });
-            navigate('/software-newgrad'); // Redirect after successful submission
-        } catch (error) {
-            console.error('Error submitting job post:', error);
-            // Handle submission error (e.g., show an error message)
-        }
-    };
 
-    return (
+        const token = localStorage.getItem('token'); // Corrected key for token retrieval
+
+        try {
+
+            const response = await axios.post('http://localhost:8080/addJobPost', jobPost, {
+                headers: {
+                    'Authorization': `Bearer ${token}` // Attach the token in the Authorization header
+                }
+            });
+            console.log(response.data);
+            navigate('/software-newgrad');
+        }  catch (error) {
+        console.error('Error submitting job post:', error);
+    }
+};
+
+
+
+
+            return (
         <form onSubmit={handleSubmit} className="job-posting-form">
             <h2>Add Job post</h2>
             <input type="text" name="company" value={jobPost.company} onChange={handleChange} placeholder="Company" />
