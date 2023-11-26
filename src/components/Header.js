@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthProvider';
 import logo from '../assets/logo.png';
 import '../styles/header.css';
-import JobAlert from "./JobAlert";
+import JobAlert from "../pages/JobAlert";
 
 const Header = () => {
     const navigate = useNavigate();

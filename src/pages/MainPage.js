@@ -2,9 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/MainPage.css';
 import companyBanner from '../assets/companyBanner.png'
+import { useAuth } from '../auth/AuthProvider';
+import JobAlert from "../pages/JobAlert";
 
 const MainPage = () => {
     const [companyNumber, setCompanyNumber] = useState(0);
+    const { user, isLoggedIn } = useAuth();
+    const [isJobAlertOpen, setIsJobAlertOpen] = useState(false);
+    const openJobAlert = () => setIsJobAlertOpen(true);
+    const closeJobAlert = () => setIsJobAlertOpen(false);
 
     useEffect(() => {
         // Fetch the number of unique companies from the backend on component mount
@@ -20,6 +26,15 @@ const MainPage = () => {
         fetchCompanyNumber();
     }, []);
 
+
+    const handleUpdateButton = () => {
+        if (!isLoggedIn) {
+            alert("Please log in");
+            return;
+        }
+        openJobAlert();
+    };
+
     return (
         <div className="main-page">
             <h1>A Place for
@@ -33,10 +48,11 @@ const MainPage = () => {
                 <span className="company-number"> {companyNumber} </span>
                 top companies
             </div>
-            <button className="update-button">Get Job Updates →</button>
+            <button className="update-button" onClick={handleUpdateButton}>Get Job Updates →</button>
             <div className="company-logos">
                 <img src={companyBanner} alt="Company Logos" />
             </div>
+            <JobAlert isOpen={isJobAlertOpen} onClose={closeJobAlert} />
         </div>
     );
 };
