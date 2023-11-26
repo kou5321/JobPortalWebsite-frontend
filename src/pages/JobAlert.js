@@ -10,13 +10,17 @@ const JobAlert = ({ isOpen, onClose }) => {
                 <label>
                     <input type="checkbox" value={value} />
                     <span className="label-text">
+                        <span> </span>
                     {title}, with less than
+                        <span> </span>
                     <select aria-label="Years of experience">
                         {Array.from({ length: 5 }, (_, i) => (
                             <option key={i} value={i}>{i + 1} year{ i > 0 ? 's' : '' }</option>
                         ))}
                     </select>
+                        <span> </span>
                     of experience in
+                        <span> </span>
                     <select aria-label="Country">
                         <option value="United States">United States</option>
                         <option value="Canada">Canada</option>
