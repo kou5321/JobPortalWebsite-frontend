@@ -33,11 +33,15 @@ const JobPostingForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        const currentDate = new Date();
+        const formattedDate = currentDate.toGMTString();
+        const updatedJobPost = { ...jobPost, date_added: formattedDate };
+
         const token = localStorage.getItem('token'); // Corrected key for token retrieval
 
         try {
 
-            const response = await axios.post('http://localhost:8080/addJobPost', jobPost, {
+            const response = await axios.post('http://localhost:8080/addJobPost', updatedJobPost, {
                 headers: {
                     'Authorization': `Bearer ${token}` // Attach the token in the Authorization header
                 }
