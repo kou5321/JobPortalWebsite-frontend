@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Register from './auth/Register.jsx';
+import Register from './auth/Register.js';
 import SoftwareNewGradPage from "./pages/SoftwareNewGradPage";
 import Login from './auth/Login';
 import Dashboard from './pages/Dashboard.js';

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from '../auth/AuthProvider';
 import DashboardTabs from '../components/DashboardTabs';
-import '../styles/JobList.css'; // Assuming this CSS styles the job list appropriately
+import '../styles/JobList.css';
 import '../styles/Dashboard.css';
 
 const Dashboard = () => {

@@ -19,10 +19,10 @@ const Login = () => {
             const token = response.data.jwtToken;
             const roles = response.data.user.roles.map(role => role.name);
             localStorage.setItem('token', response.data.jwtToken);
-            const userForContext = {
-                ...response.data.user,
-                roles: roles
-            };
+                const userForContext = {
+                    ...response.data.user,
+                    roles: roles
+                };
             login(userForContext, token);
             navigate('/software-newgrad');
         } catch (error) {
