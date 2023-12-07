@@ -10,7 +10,7 @@ const JobPostingForm = () => {
         category: '',
         title: '',
         yoe: '',
-        date_added: '', // Add if needed, or handle it in the backend
+        date_added: '',
         location: '',
         sponsor: '',
         apply_link: ''
@@ -20,7 +20,7 @@ const JobPostingForm = () => {
 
     useEffect(() => {
         if (!user || !user.roles.includes('ADMIN')) {
-            navigate('/'); // redirect to home or another appropriate page
+            navigate('/'); // redirect to home
         }
     }, [user, navigate]);
 
@@ -56,7 +56,7 @@ const JobPostingForm = () => {
 
 
 
-            return (
+    return (
         <form onSubmit={handleSubmit} className="job-posting-form">
             <h2>Add Job post</h2>
             <input type="text" name="company" value={jobPost.company} onChange={handleChange} placeholder="Company" />

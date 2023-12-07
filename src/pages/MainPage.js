@@ -7,7 +7,7 @@ import JobAlert from "../pages/JobAlert";
 
 const MainPage = () => {
     const [companyNumber, setCompanyNumber] = useState(0);
-    const { user, isLoggedIn } = useAuth();
+    const { isLoggedIn } = useAuth();
     const [isJobAlertOpen, setIsJobAlertOpen] = useState(false);
     const openJobAlert = () => setIsJobAlertOpen(true);
     const closeJobAlert = () => setIsJobAlertOpen(false);
