@@ -45,7 +45,7 @@ const JobList = ({ searchQuery }) => {
                 }
             } else {
                 // No search query: use getAllJobPosts or filtered based on country
-                 if (countryFilter["United States"] !== countryFilter["Canada"]) {
+                if (countryFilter["United States"] !== countryFilter["Canada"]) {
                     // Only one country filter is selected
                     apiUrl = 'http://localhost:8080/jobPost/search';
                     const selectedCountry = countryFilter["United States"] ? 'United States' : 'Canada';
