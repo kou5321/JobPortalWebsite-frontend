@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthProvider';
-import logo from '../assets/ameslogo.png';
+import logo from '../assets/logo.png';
 import '../styles/header.css';
 import JobAlert from "../pages/JobAlert";
 
